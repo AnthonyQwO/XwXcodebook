@@ -1,6 +1,7 @@
 # codebook XwX version
-Adapted from the template provided by the senior.
-Thanks to the template left by the senior, we don't have to start from scratch.
+Adapted from the template provided by the senior.  
+Thanks to the template left by the senior, we don't have to start from scratch.  
+[Senior's codebook](https://github.com/jakao0907/contest)
 
 ## XwX (2023- )
 
