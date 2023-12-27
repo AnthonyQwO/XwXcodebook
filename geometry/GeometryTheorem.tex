@@ -1,0 +1,50 @@
+\begin{itemize}
+\item Lucas’ Theorem :\\
+  For $n, m \in \mathbb{Z}^{*}$ and prime $P$,
+  $C(m,n) \mod P$
+  %= C(\frac{m}{M},n/M) * C(m\%M,n\%M) mod P
+	$= \Pi ( C(m_i,n_i) )$
+  where $m_i$ is the $i$-th digit of $m$ in base $P$.
+\item Stirling approximation : \\
+  $n!\approx\sqrt{ 2 \pi n}(\frac{n}{e})^{n}e^\frac{1}{12n}$
+\item Stirling Numbers(permutation $|P|=n$ with $k$ cycles): \\
+  $S(n,k) = \text{coefficient of }x^k \text{ in } \Pi_{i=0}^{n-1} (x+i)$
+\item Stirling Numbers(Partition $n$ elements into $k$ non-empty set): \\
+  $S(n,k) = \frac{1}{k!} \sum\limits_{j=0}^k (-1)^{k-j} {k \choose j} j^n$
+\item Pick’s Theorem : $A = i + b/2 - 1$\\
+  $A$: Area、 $i$: grid number in the inner、 $b$: grid number on the side
+\item Catalan number : $C_n = {2n \choose n}/(n+1)$\\
+  $C^{n+m}_{n}-C^{n+m}_{n+1} = (m+n)! \frac{n-m+1}{n+1}\quad for \quad  n \ge m$\\
+  $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$\\
+  $C_0 = 1 \quad  and \quad C_{n+1}= 2(\frac{2n+1}{n+2})C_n$\\
+  $C_0 = 1 \quad  and \quad C_{n+1} = \sum_{i=0}^{n} C_iC_{n-i} \quad for \quad  n \ge 0$
+\item Euler Characteristic: \\
+  planar graph: $V-E+F-C=1$ \\
+  convex polyhedron: $V-E+F=2$ \\
+  $V,E,F,C$: number of vertices, edges, faces(regions), and components
+\item Kirchhoff's theorem : \\
+  $A_{ii} = deg(i), A_{ij} = (i,j) \in E\ ? -1 : 0$,
+  Deleting any one row, one column, and cal the det(A)
+\item Polya' theorem ($c$ is number of color，$m$ is the number of cycle size): \\
+  $(\sum_{i=1}^{m}{c^{gcd(i,m)}})/m$
+\item Burnside lemma: \\
+  $|X/G| = \frac{1}{|G|}\sum\limits_{g\in G} |X^g|$
+\item 錯排公式 :  ($n$個人中，每個人皆不再原來位置的組合數): \\
+  $dp[0]=1;dp[1]=0;$\\
+  $dp[i]=(i-1)*(dp[i-1]+dp[i-2])$;
+\item Bell數 (有$n$個人,把他們拆組的方法總數) : \\
+  $B_0= 1$\\
+  $B_n= \sum_{k=0}^{n} s(n,k)\quad (second-stirling)\\
+  B_{n+1}= \sum_{k=0}^{n}{n \choose k} B_k$
+\item Wilson's theorem :\\
+  $(p-1)! \equiv -1 (mod \ p)$
+\item Fermat's little theorem :\\
+  $a^p \equiv a (mod \ p)$
+\item Euler's totient function:\\
+  $ A ^ {B ^ C} mod \ p = pow(A,pow(B,C,p-1)) mod \ p$
+\item 歐拉函數降冪公式:\\
+  $A^B \mod C=A^{B \mod \phi(c) + \phi(c)}\mod C$
+\item 6的倍數: \\
+ $(a-1)^3 + (a+1)^3 + (-a)^3 + (-a)^3 = 6a$
+\end{itemize}
+

@@ -1,0 +1,90 @@
+\contentsline {section}{\numberline {1}Basic}{1}{}%
+\contentsline {subsection}{\numberline {1.1}default code}{1}{}%
+\contentsline {subsection}{\numberline {1.2}.vimrc}{1}{}%
+\contentsline {subsection}{\numberline {1.3}Increase Stack Size (linux)}{1}{}%
+\contentsline {subsection}{\numberline {1.4}Misc}{1}{}%
+\contentsline {subsection}{\numberline {1.5}check}{1}{}%
+\contentsline {section}{\numberline {2}flow}{1}{}%
+\contentsline {subsection}{\numberline {2.1}ISAP $O(V^{3})$}{1}{}%
+\contentsline {subsection}{\numberline {2.2}MinCostFlow}{1}{}%
+\contentsline {subsection}{\numberline {2.3}Dinic $O(V^{2}E)$}{2}{}%
+\contentsline {subsection}{\numberline {2.4}Kuhn Munkres 最大完美二分匹配 $O(n^{3})$}{2}{}%
+\contentsline {subsection}{\numberline {2.5}SW min-cut (不限S-T的min-cut) $O(V^{3})$}{2}{}%
+\contentsline {subsection}{\numberline {2.6}Max flow with lower/upper bound}{3}{}%
+\contentsline {subsection}{\numberline {2.7}Flow Method}{3}{}%
+\contentsline {section}{\numberline {3}Math}{3}{}%
+\contentsline {subsection}{\numberline {3.1}FFT}{3}{}%
+\contentsline {subsection}{\numberline {3.2}O(1)mul}{4}{}%
+\contentsline {subsection}{\numberline {3.3}Faulhaber ($\DOTSB \sum@ \slimits@ \limits _{i=1}^{n}i^p$)}{4}{}%
+\contentsline {subsection}{\numberline {3.4}Chinese Remainder}{4}{}%
+\contentsline {subsection}{\numberline {3.5}Miller Rabin}{4}{}%
+\contentsline {subsection}{\numberline {3.6}Pollard Rho}{4}{}%
+\contentsline {subsection}{\numberline {3.7}Josephus Problem}{5}{}%
+\contentsline {subsection}{\numberline {3.8}Matrix}{5}{}%
+\contentsline {subsection}{\numberline {3.9}Gaussian Elimination}{5}{}%
+\contentsline {subsection}{\numberline {3.10}Inverse Matrix}{5}{}%
+\contentsline {subsection}{\numberline {3.11}模反元素}{5}{}%
+\contentsline {subsection}{\numberline {3.12}ax+by=gcd}{6}{}%
+\contentsline {subsection}{\numberline {3.13}Discrete sqrt}{6}{}%
+\contentsline {subsection}{\numberline {3.14}Prefix Inverse}{6}{}%
+\contentsline {subsection}{\numberline {3.15}Roots of Polynomial 找多項式的根}{6}{}%
+\contentsline {subsection}{\numberline {3.16}Combination thearom}{6}{}%
+\contentsline {subsection}{\numberline {3.17}Primes}{6}{}%
+\contentsline {subsection}{\numberline {3.18}Phi}{7}{}%
+\contentsline {subsection}{\numberline {3.19}Result}{7}{}%
+\contentsline {section}{\numberline {4}Geometry}{7}{}%
+\contentsline {subsection}{\numberline {4.1}definition}{7}{}%
+\contentsline {subsection}{\numberline {4.2}Intersection of 2 lines}{7}{}%
+\contentsline {subsection}{\numberline {4.3}halfPlaneIntersection}{7}{}%
+\contentsline {subsection}{\numberline {4.4}Convex Hull}{8}{}%
+\contentsline {subsection}{\numberline {4.5}Convex Hull trick}{8}{}%
+\contentsline {subsection}{\numberline {4.6}Intersection of 2 segments}{9}{}%
+\contentsline {subsection}{\numberline {4.7}Point In Polygon}{9}{}%
+\contentsline {subsection}{\numberline {4.8}Tangent line of two circles}{9}{}%
+\contentsline {subsection}{\numberline {4.9}Minimum distance of two convex}{9}{}%
+\contentsline {subsection}{\numberline {4.10}Area of Rectangles}{9}{}%
+\contentsline {subsection}{\numberline {4.11}Min dist on Cuboid}{10}{}%
+\contentsline {subsection}{\numberline {4.12}Heart of Triangle}{10}{}%
+\contentsline {section}{\numberline {5}Graph}{10}{}%
+\contentsline {subsection}{\numberline {5.1}DSU 並查集 \& MST}{10}{}%
+\contentsline {subsection}{\numberline {5.2}Lowest Common Ancestor $O(lgn)$}{10}{}%
+\contentsline {subsection}{\numberline {5.3}Hamiltonian path $O(n^{2}2^{n})$}{11}{}%
+\contentsline {subsection}{\numberline {5.4}MaximumClique 最大團}{11}{}%
+\contentsline {subsection}{\numberline {5.5}MaximalClique 極大團}{11}{}%
+\contentsline {subsection}{\numberline {5.6}BCC based on vertex 點雙聯通分量}{11}{}%
+\contentsline {subsection}{\numberline {5.7}Strongly Connected Component 強連通分量}{12}{}%
+\contentsline {subsection}{\numberline {5.8}Maximum General graph Matching}{12}{}%
+\contentsline {subsection}{\numberline {5.9}Min Mean Cycle}{12}{}%
+\contentsline {subsection}{\numberline {5.10}Directed Graph Min Cost Cycle}{13}{}%
+\contentsline {subsection}{\numberline {5.11}K-th Shortest Path}{13}{}%
+\contentsline {subsection}{\numberline {5.12}Floryd Warshall}{14}{}%
+\contentsline {subsection}{\numberline {5.13}SPFA}{14}{}%
+\contentsline {subsection}{\numberline {5.14}Tree Hash}{14}{}%
+\contentsline {subsection}{\numberline {5.15}HeavyLightDecomposition}{15}{}%
+\contentsline {subsection}{\numberline {5.16}差分約束}{15}{}%
+\contentsline {section}{\numberline {6}String}{15}{}%
+\contentsline {subsection}{\numberline {6.1}PalTree $O(n)$}{15}{}%
+\contentsline {subsection}{\numberline {6.2}Longest Increasing Subsequence}{15}{}%
+\contentsline {subsection}{\numberline {6.3}Longest Common Subsequence $O(nlgn)$}{16}{}%
+\contentsline {subsection}{\numberline {6.4}KMP}{16}{}%
+\contentsline {subsection}{\numberline {6.5}SAIS $O(n)$}{16}{}%
+\contentsline {subsection}{\numberline {6.6}Z Value $O(n)$}{16}{}%
+\contentsline {subsection}{\numberline {6.7}Manacher Algorithm $O(n)$}{16}{}%
+\contentsline {subsection}{\numberline {6.8}Smallest Rotation}{17}{}%
+\contentsline {subsection}{\numberline {6.9}Cyclic LCS}{17}{}%
+\contentsline {subsection}{\numberline {6.10}Hash}{17}{}%
+\contentsline {section}{\numberline {7}Data Structure}{17}{}%
+\contentsline {subsection}{\numberline {7.1}Segment tree}{17}{}%
+\contentsline {subsection}{\numberline {7.2}持久化 SMT}{18}{}%
+\contentsline {subsection}{\numberline {7.3}Trie}{18}{}%
+\contentsline {subsection}{\numberline {7.4}Treap (interval reverse)}{19}{}%
+\contentsline {subsection}{\numberline {7.5}Treap (interval erase)}{19}{}%
+\contentsline {subsection}{\numberline {7.6}BIT}{20}{}%
+\contentsline {subsection}{\numberline {7.7}Black Magic}{20}{}%
+\contentsline {section}{\numberline {8}Others}{21}{}%
+\contentsline {subsection}{\numberline {8.1}SOS dp}{21}{}%
+\contentsline {subsection}{\numberline {8.2}Max subrectangle}{21}{}%
+\contentsline {subsection}{\numberline {8.3}De Brujin sequence}{21}{}%
+\contentsline {subsection}{\numberline {8.4}CDQ 分治}{21}{}%
+\contentsline {subsection}{\numberline {8.5}3D LIS}{21}{}%
+\contentsline {subsection}{\numberline {8.6}Aho-Corasick}{22}{}%

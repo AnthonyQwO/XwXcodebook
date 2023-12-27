@@ -1,0 +1,33 @@
+Maximize c^T x subject to Ax ≤ b, x ≥ 0;
+with the corresponding symmetric dual problem,
+Minimize b^T y subject to A^T y ≥ c, y ≥ 0.
+
+Maximize c^T x subject to Ax ≤ b;
+with the corresponding asymmetric dual problem,
+Minimize b^T y subject to A^T y = c, y ≥ 0. 
+
+Minimum vertex cover on bipartite graph =
+Maximum matching on bipartite graph
+
+Minimum edge cover on bipartite graph =
+vertex number - Minimum vertex cover(Maximum matching)
+
+Independent set on bipartite graph =
+vertex number - Minimum vertex cover(Maximum matching)
+
+找出最小點覆蓋，做完dinic之後，從源點dfs只走還有流量的
+邊，左邊沒被走到的點跟右邊被走到的點就是答案，其他點為最大獨立集
+
+Maximum density subgraph ( \sum W_e + \sum W_v ) / |V|
+
+Binary search on answer:
+For a fixed D, construct a Max flow model as follow:
+Let S be Sum of all weight( or inf)
+1. from source to each node with cap = S
+2. For each (u,v,w) in E, (u->v,cap=w), (v->u,cap=w)
+3. For each node v, from v to sink with cap = S + 2 * D - deg[v] - 2 * (W of v)
+where deg[v] = \sum weight of edge associated with v
+If maxflow < S * |V|, D is an answer.
+
+Requiring subgraph: all vertex can be reached from source with
+edge whose cap > 0.
