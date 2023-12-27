@@ -1,4 +1,8 @@
-# HongLongLongLong (2020-2021)
+# codebook XwX version
+Adapted from the template provided by the senior.
+Thanks to the template left by the senior, we don't have to start from scratch.
+
+## HongLongLongLong (2020-2021)
 
 ## Team member
 [Team](https://codeforces.com/team/73232)
