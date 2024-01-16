@@ -1,3 +1,4 @@
+// !!!注意build()時初始化用的陣列也是1-base
 #define cl(x) (x*2)
 #define cr(x) (x*2+1)
 
