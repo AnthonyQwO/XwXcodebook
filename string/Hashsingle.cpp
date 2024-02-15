@@ -4,9 +4,8 @@
 const int p = 75577, modl = 1e9 + 7;
 vector<int> build(const string& s) {
     vector<int> ret(1, 0);
-    for(int i=1; i<=s.size(); i++) {
+    for(int i=1; i<=s.size(); i++)
         ret.push_back((ret.back() * p + s[i-1]) % modl);
-    }
     return ret;
 }
 int qpow(int n, int k){

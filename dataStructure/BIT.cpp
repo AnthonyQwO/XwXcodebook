@@ -1,28 +1,17 @@
 #define lowbit(x) (x&-x)
-struct BIT {    
+struct BIT {
     int n;
     vector<int> bit;
-    BIT( int t ) {
-        n=t;
-        bit=vector<int>(n+1,0);
-    }
-    ~BIT() {bit.clear();}
-    void update( int pos, int val ) {
-        while ( pos <= n ) {
-            bit[pos]+=val;
-            pos+=lowbit(pos);
-        }
+    BIT(int _n):n(_n), bit(n+1) {}
+    void update( int x, int val ) {
+        for(;x <= n; x += lowbit(x)) bit[x] += val;
     }
     void range_update( int L, int R, int val ) {
-        update(L,val);
-        update(R+1,-val);
+        update(L,val), update(R+1,-val);        
     }
-    int query( int pos ) {
-        int res=0;
-        while( pos ) {
-            res+=bit[pos];
-            pos-=lowbit(pos);
-        }
+    int query( int x ) {
+        int res = 0;
+        for(;x; x -= lowbit(x)) res += bit[x];
         return res;
     }
     int range_query( int L, int R ) {

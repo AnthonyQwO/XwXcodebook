@@ -4,6 +4,7 @@
 //若要取得區間[L,R]的值則
 //H[R] - H[L-1] * p^(R-L+1)
 //cmp為比較從i開始長度為len的字串和
+//(h[i+len-1] - h[i-1] * qpow(p, len) % modl + modl)
 //從j開始長度為len的字串是否相同
 #define x first
 #define y second
