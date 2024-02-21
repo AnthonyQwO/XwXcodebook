@@ -12,7 +12,7 @@ struct segmentTree {
     void push(int i, int L, int R) {
         if(cov[i]) {
             seg[i]=cov[i]*(R-L+1);
-            if( L < R ) {
+            if(L < R) {
                 cov[cl(i)]=cov[cr(i)]=cov[i];
                 tag[cl(i)]=tag[cr(i)]=0;
             }
