@@ -1,4 +1,5 @@
-float InvSqrt(float x) {  
+// 計算結果是平方根的倒數
+float InvSqrt(float x) { 
     float xhalf = 0.5f * x;
     int i = *(int *) &x;
     i = 0x5f3759df - (i >> 1);
