@@ -21,7 +21,7 @@ Thanks to the template left by the senior, we don't have to start from scratch.
 
 ## Commonly used Algorithms
 
-- [String Hash](string/Hashsingle.cpp)
-- [Segment Tree](dataStructure/seg_treewithtestcase.cpp)
-- [Scc](graph/kosaraju.cpp)
-- [Bcc](graph/bcc_vertex.cpp)
+|String|DataStructure|Graph|
+|:----:|:-----------:|:---:|
+|[String Hash](string/Hashsingle.cpp)|[Segment Tree](dataStructure/seg_treewithtestcase.cpp)|[Scc](graph/kosaraju.cpp)|
+|||[Bcc](graph/bcc_vertex.cpp)|
