@@ -18,7 +18,7 @@ struct KeyHasher {
 		return k.first + k.second * 100000;
 }	};
 typedef unordered_map<Key,int,KeyHasher> map_t;
-
+// builtin function 可以代的值為int32
 __builtin_popcountll    // 二進位有幾個1
 __builtin_clzll         // 左起第一個1之前0的個數
 __builtin_parityll      // 1的個數的奇偶性
