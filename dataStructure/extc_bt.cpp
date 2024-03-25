@@ -1,7 +1,7 @@
 #include <bits/extc++.h>
 using namespace __gnu_pbds;
 typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> set_t;
-// tree<int,null_type,less_equal<int>,rb_tree_tag,tree_order_statistics_node_update> s;
+tree<int,null_type,less_equal<int>,rb_tree_tag,tree_order_statistics_node_update> mt_t;
 #include <ext/pb_ds/assoc_container.hpp>
 typedef cc_hash_table<int,int> umap_t;
 // gp_hash_table<int, int>
@@ -23,6 +23,8 @@ int main(){
   assert(*s.find_by_order(0) == 505);
   // The order of the keys should be: 505.
   assert(s.order_of_key(505) == 0);
+  // if we want to delete less_equal tag tree
+  mt_t.erase(mt_t.find_by_order(mt_t.order_of_key(val)));
 
   heap h1 , h2; h1.join( h2 );
 
