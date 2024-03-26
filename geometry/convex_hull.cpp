@@ -6,7 +6,7 @@ vector<Pt> convex_hull(vector<Pt> pt){
   int top=0;
   vector<Pt> stk(2*pt.size());
   for (int i=0; i<(int)pt.size(); i++){
-    while (top >= 2 && cross(stk[top-2],stk[top-1],pt[i]) <= 0)
+    while (top >= 2 && cross(stk[top-2],stk[top-1],pt[i]) <= 0) // 如果想要有點共線的點，把 <= 改成 <
       top--;
     stk[top++] = pt[i];
   }
