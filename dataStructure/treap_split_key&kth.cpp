@@ -4,6 +4,7 @@
 
 //treap拆區間時從後面拆是因為這樣[a,b]的關係
 //不用重新考慮，要是先拆前面b的位置會變成b-a+1
+//0-base
 //splitByTh(root,a-1,l,m);
 //splitByTh(m,b-a+1,m,r); 
 
