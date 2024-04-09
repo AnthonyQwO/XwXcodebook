@@ -21,9 +21,9 @@ Thanks to the template left by the senior, we don't have to start from scratch.
 
 ## Commonly used Algorithms
 
-|String|DataStructure|Graph|
-|:----:|:-----------:|:---:|
-|[String Hash](string/Hashsingle.cpp)|[Segment Tree](dataStructure/seg_treewithtestcase.cpp)|[Scc](graph/kosaraju.cpp)|
+|String|DataStructure|Graph|Flow|
+|:----:|:-----------:|:---:|:--:|
+|[String Hash](string/Hashsingle.cpp)|[Segment Tree](dataStructure/seg_treewithtestcase.cpp)|[Scc](graph/kosaraju.cpp)|[Dinic](flow/dinic_BCW.cpp)|
 |[KMP](string/KMP.cpp)|[BIT](dataStructure/BIT.cpp)|[Bcc](graph/bcc_vertex.cpp)|
 |||[K-th shortest path](graph/KSP.cpp)|
 |||[DSU & MST](graph/DSU.cpp)|
