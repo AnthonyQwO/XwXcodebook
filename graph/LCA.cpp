@@ -4,8 +4,8 @@ struct LCA {
   int MaxLength[MXN][__lg(MXN) + 1] = {0};
   int time_in[MXN] = {0};
   int time_out[MXN] = {0};
-  LCA( int _n, int f ):n(_n), ti(0), lgN(__lg(n)) {
-    dfs(f,f,0);
+  LCA(int _n, int f):n(_n), ti(0), lgN(__lg(n)) {
+    dfs(f, f, 0);
     build();
   }
   void dfs(int now, int f, int len_to_father) {  // dfs for anc, time, Lenth
@@ -29,8 +29,7 @@ struct LCA {
     }
   }
   bool isAncestor(int x, int y) {
-    if (time_in[x] <= time_in[y] && time_out[x] >= time_out[y]) return true;
-    return false;
+    return time_in[x] <= time_in[y] && time_out[x] >= time_out[y];
   }
   int getLCA(int u, int v) {
     if (isAncestor(u, v)) return u;
