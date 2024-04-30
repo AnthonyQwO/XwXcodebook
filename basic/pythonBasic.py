@@ -26,6 +26,7 @@ sum.quantize(Decimal('.00'), ROUND_HALF_UP)
 
 """Fraction"""
 x = Fraction(1, 3) # 1/3
+x.as_integer_ratio() # (1, 3)
 
 """input list of integers"""
 arr = list(map(int, input().split()))
