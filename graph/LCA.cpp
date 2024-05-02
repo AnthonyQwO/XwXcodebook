@@ -25,6 +25,8 @@ struct LCA {
         anc[u][i] = anc[anc[u][i - 1]][i - 1];
         MaxLength[u][i] = max(MaxLength[u][i - 1],
                   MaxLength[anc[u][i - 1]][i - 1]);
+        // dis[u][i] += dis[anc[u][i - 1]][i - 1]
+        // + dis[u][i - 1];
       }
     }
   }
