@@ -28,4 +28,5 @@ Thanks to the template left by the senior, we don't have to start from scratch.
 |||[K-th shortest path](graph/KSP.cpp)|[Min-Cost Flow](flow/zkwflow.cpp)
 |||[DSU & MST](graph/DSU.cpp)|
 
+QwO
 0x0
