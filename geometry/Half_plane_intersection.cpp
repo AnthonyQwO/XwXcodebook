@@ -2,33 +2,31 @@
 // 傳入 vector<Line>
 // (半平面為點 st 往 ed 的逆時針方向)
 // 回傳值為形成的凸多邊形的頂點 vector
-
-// 對於點或線的解，將 '>' 改為 '>='
-bool onleft(Line L, Pt p) { return dcmp(L.v ^ (p - L.s)) > 0; }
-
-// 假設線段是有交點的
-vector<Pt> HPI(vector<Line> &L) {
-  sort(L.begin(), L.end());  // 按角度排序
-  int n = L.size(), fir, las;
-  Pt *p = new Pt[n];
-  Line *q = new Line[n];
-  q[fir = las = 0] = L[0];
-  for (int i = 1; i < n; i++) {
-    while (fir < las && !onleft(L[i], p[las - 1])) las--;
-    while (fir < las && !onleft(L[i], p[fir])) fir++;
-    q[++las] = L[i];
-    if (dcmp(q[las].v ^ q[las - 1].v) == 0) {
-      las--;
-      if (onleft(q[las], L[i].s)) q[las] = L[i];
+// assume that Lines intersect
+vector<Pt> HPI(vector<Line> P) {
+    sort(P.begin(), P.end(), [&](Line l, Line m) {
+        if (argcmp(l.v, m.v)) return true;
+        if (argcmp(m.v, l.v)) return false;
+        return PtSide(l.s, m) > 0;
+    });
+    int n = P.size(), l = 0, r = -1;
+    for (int i = 0; i < n; i++) {
+        if (i and !argcmp(P[i - 1].v, P[i].v)) continue;
+        while (l < r and PtSide(LLIntersect(P[r-1], P[r]), P[i]) <= 0) r--;
+        while (l < r and PtSide(LLIntersect(P[l], P[l+1]), P[i]) <= 0) l++;
+        P[++r] = P[i];
     }
-    if (fir < las) 
-      p[las - 1] = LLIntersect(q[las - 1], q[las]);
-  }
-  while (fir < las && !onleft(q[fir], p[las - 1])) las--;
-  if (las - fir <= 1) return {};
-  p[las] = LLIntersect(q[las], q[fir]);
-  int m = 0;
-  vector<Pt> ans(las - fir + 1);
-  for (int i = fir; i <= las; i++) ans[m++] = p[i];
-  return ans;
+    while (l < r and PtSide(LLIntersect(P[r-1], P[r]), P[l]) <= 0) r--;
+    while (l < r and PtSide(LLIntersect(P[l], P[l+1]), P[r]) <= 0) l++;
+    if (r - l <= 1 or !argcmp(P[l].v, P[r].v))
+        return {}; // empty
+    if (PtSide(LLIntersect(P[l], P[r]), P[l+1]) <= 0) {
+        assert(0);
+        return {}; // infinity
+    }
+    vector<Line> lns = vector(P.begin() + l, P.begin() + r + 1);
+	lns.push_back(lns[0]);
+	vector<Pt> hpi;
+	for(int i = 1; i < lns.size(); i++) hpi.push_back(LLIntersect(lns[i-1], lns[i]));
+	return hpi;
 }

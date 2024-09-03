@@ -1,103 +1,71 @@
-/* Given a convexhull, answer querys in O(lgN)
-CH should not contain identical points, the area should
-be > 0, min pair(x, y) should be listed first */
-double det( const Pt& p1 , const Pt& p2 )
-{ return p1.X * p2.Y - p1.Y * p2.X; }
-struct Conv{
+struct Convex {
   int n;
-  vector<Pt> a;
-  vector<Pt> upper, lower;
-  Conv(vector<Pt> _a) : a(_a){
-    n = a.size();
-    int ptr = 0;
-    for(int i=1; i<n; ++i) if (a[ptr] < a[i]) ptr = i;
-    for(int i=0; i<=ptr; ++i) lower.push_back(a[i]);
-    for(int i=ptr; i<n; ++i) upper.push_back(a[i]);
-    upper.push_back(a[0]);
-  }
-  int sign( LL x ){ // fixed when changed to double
-    return x < 0 ? -1 : x > 0; }
-  pair<LL,int> get_tang(vector<Pt> &conv, Pt vec){
-    int l = 0, r = (int)conv.size() - 2;
-    for( ; l + 1 < r; ){
-      int mid = (l + r) / 2;
-      if(sign(det(conv[mid+1]-conv[mid],vec))>0)r=mid;
-      else l = mid;
+  vector<Pt> A, V, L, U;
+  Convex(const vector<Pt> &_A) : A(_A), n(_A.size()) { // n >= 3
+    auto it = max_element(all(A));
+    L.assign(A.begin(), it + 1);
+    U.assign(it, A.end()), U.push_back(A[0]);
+    for (int i = 0; i < n; i++) {
+      V.push_back(A[(i + 1) % n] - A[i]);
     }
-    return max(make_pair(det(vec, conv[r]), r),
-               make_pair(det(vec, conv[0]), 0));
   }
-  void upd_tang(const Pt &p, int id, int &i0, int &i1){
-    if(det(a[i0] - p, a[id] - p) > 0) i0 = id;
-    if(det(a[i1] - p, a[id] - p) < 0) i1 = id;
+  int PtSide(Pt p, Line L) {
+    return dcmp((L.b - L.a)^(p - L.a));
   }
-  void bi_search(int l, int r, Pt p, int &i0, int &i1){
-    if(l == r) return;
-    upd_tang(p, l % n, i0, i1);
-    int sl=sign(det(a[l % n] - p, a[(l + 1) % n] - p));
-    for( ; l + 1 < r; ) {
-      int mid = (l + r) / 2;
-      int smid=sign(det(a[mid%n]-p, a[(mid+1)%n]-p));
-      if (smid == sl) l = mid;
-      else r = mid;
-    }
-    upd_tang(p, r % n, i0, i1);
-  }
-  int bi_search(Pt u, Pt v, int l, int r) {
-    int sl = sign(det(v - u, a[l % n] - u));
-    for( ; l + 1 < r; ) {
-      int mid = (l + r) / 2;
-      int smid = sign(det(v - u, a[mid % n] - u));
-      if (smid == sl) l = mid;
-      else r = mid;
-    }
-    return l % n;
+  int inside(Pt p, const vector<Pt> &h, auto f) {
+    auto it = lower_bound(all(h), p, f);
+    if (it == h.end()) return 0;
+    if (it == h.begin()) return p == *it;
+    return 1 - dcmp((p - *prev(it))^(*it  - *prev(it)));
   }
   // 1. whether a given point is inside the CH
-  bool contain(Pt p) { 
-    if (p.X < lower[0].X || p.X > lower.back().X) return 0;
-    int id = lower_bound(lower.begin(), lower.end(), Pt(p.X, -INF)) - lower.begin();
-    if (lower[id].X == p.X) { 
-      if (lower[id].Y > p.Y) return 0;
-    }else if(det(lower[id-1]-p,lower[id]-p)<0)return 0;
-    id = lower_bound(upper.begin(), upper.end(), Pt(p.X, INF), greater<Pt>()) - upper.begin();
-    if (upper[id].X == p.X) {
-      if (upper[id].Y < p.Y) return 0;
-    }else if(det(upper[id-1]-p,upper[id]-p)<0)return 0;
-    return 1;
+  // ret 0: out, 1: on, 2: in
+  int inside(Pt p) { 
+    return min(inside(p, L, less{}), inside(p, U, greater{}));
   }
-  // 2. Find 2 tang pts on CH of a given outside point
-  // return true with i0, i1 as index of tangent points
-  // return false if inside CH
-  bool get_tang(Pt p, int &i0, int &i1) { 
-    if (contain(p)) return false;
-    i0 = i1 = 0;
-    int id = lower_bound(lower.begin(), lower.end(), p) - lower.begin();
-    bi_search(0, id, p, i0, i1);
-    bi_search(id, (int)lower.size(), p, i0, i1);
-    id = lower_bound(upper.begin(), upper.end(), p, greater<Pt>()) - upper.begin();
-    bi_search((int)lower.size() - 1, (int)lower.size() - 1 + id, p, i0, i1);
-    bi_search((int)lower.size() - 1 + id, (int)lower.size() - 1 + (int)upper.size(), p, i0, i1);
-    return true;
+  static bool cmp(Pt a, Pt b) { return dcmp(a ^ b) > 0; }
+  // 2. Find tangent points of a given vector
+  // ret the idx of far/closer tangent point
+  int tangent(Pt v, bool close = true) {
+    assert(v != Pt{});
+    auto l = V.begin(), r = V.begin() + L.size() - 1;
+    if (v < Pt{}) l = r, r = V.end();
+    if (close) return (lower_bound(l, r, v, cmp) - V.begin()) % n;
+    return (upper_bound(l, r, v, cmp) - V.begin()) % n;
+  } 
+  // 3. Find 2 tang pts on CH of a given outside point
+  // return index of tangent points
+  // return {-1, -1} if inside CH
+  array<int, 2> tangent2(Pt p) {
+    array<int, 2> t{-1, -1};
+    if (inside(p) == 2) return t;
+    if (auto it = lower_bound(all(L), p); it != L.end() and p == *it) {
+      int s = it - L.begin();
+      return {(s + 1) % n, (s - 1 + n) % n};
+    }
+    if (auto it = lower_bound(all(U), p, greater{}); it != U.end() and p == *it) {
+      int s = it - U.begin() + L.size() - 1;
+      return {(s + 1) % n, (s - 1 + n) % n};
+    }
+    for (int i = 0; i != t[0]; i = tangent((A[t[0] = i] - p), 0));
+    for (int i = 0; i != t[1]; i = tangent((p - A[t[1] = i]), 1));
+    return t;
   }
-  // 3. Find tangent points of a given vector
-  // ret the idx of vertex has max cross value with vec
-  int get_tang(Pt vec){ 
-    pair<LL, int> ret = get_tang(upper, vec);
-    ret.second = (ret.second+(int)lower.size()-1)%n;
-    ret = max(ret, get_tang(lower, vec));
-    return ret.second;
-  }
+  int find(int l, int r, Line L) {
+    if (r < l) r += n;
+    int s = PtSide(A[l % n], L);
+    return *ranges::partition_point(views::iota(l, r),
+      [&](int m) {
+        return PtSide(A[m % n], L) == s;
+      }) - 1;
+  };
   // 4. Find intersection point of a given line
-  // return 1 and intersection is on edge (i, next(i))
-  // return 0 if no strictly intersection
-  bool get_intersection(Pt u, Pt v, int &i0, int &i1){ 
-   int p0 = get_tang(u - v), p1 = get_tang(v - u);
-   if(sign(det(v-u,a[p0]-u))*sign(det(v-u,a[p1]-u))<0){
-     if (p0 > p1) swap(p0, p1);
-     i0 = bi_search(u, v, p0, p1);
-     i1 = bi_search(u, v, p1, p0 + n);
-     return 1;
-   }
-   return 0;
-}  };
+  // intersection is on edge (i, next(i))
+  vector<int> intersect(Line L) {
+    int l = tangent(L.a - L.b), r = tangent(L.b - L.a);
+    if(PtSide(A[l], L) == 0) return {l};
+    if(PtSide(A[r], L) == 0) return {r};
+    if (PtSide(A[l], L) * PtSide(A[r], L) > 0) return {};
+    return {find(l, r, L) % n, find(r, l, L) % n};
+  }
+};

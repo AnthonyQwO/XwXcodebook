@@ -1,5 +1,9 @@
+#define all(a) a.begin(),a.end()
+ostream& operator<<(ostream& os, const Pt& pt) {
+  return os << "(" << pt.x << ", " << pt.y << ")";}
 typedef long double ld;
 const ld eps = 1e-8;
+const ld pi = acos(-1);
 int dcmp(ld x) {
   if(abs(x) < eps) return 0;
   else return x < 0 ? -1 : 1;
@@ -33,13 +37,6 @@ Pt perp(const Pt &a) {
   return Pt(-a.y, a.x); }
 Pt rotate(const Pt &a, ld ang) {
   return Pt(a.x*cos(ang)-a.y*sin(ang), a.x*sin(ang)+a.y*cos(ang)); }
-struct Line {
-  Pt s, e, v; // start, end, end-start
-  ld ang;
-  Line(Pt _s=Pt(0, 0), Pt _e=Pt(0, 0)):s(_s), e(_e) { v = e-s; ang = atan2(v.y, v.x); }
-  bool operator<(const Line &L) const {
-    return ang < L.ang;
-} };
 struct Circle {
   Pt o; ld r;
   Circle(Pt _o=Pt(0, 0), ld _r=0):o(_o), r(_r) {}

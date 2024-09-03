@@ -1,63 +1,14 @@
-#include<bits/stdc++.h>
 #define N 1021
 #define D long double
-
-typedef long double ld;
-const ld eps = 1e-8;
-int dcmp(ld x) {
-  if(abs(x) < eps) return 0;
-  else return x < 0 ? -1 : 1;
-}
-struct Pt {
-  ld x, y;
-  Pt(ld _x=0, ld _y=0):x(_x), y(_y) {}
-  Pt operator+(const Pt &a) const {
-    return Pt(x+a.x, y+a.y);  }
-  Pt operator-(const Pt &a) const {
-    return Pt(x-a.x, y-a.y);  }
-  Pt operator*(const ld &a) const {
-    return Pt(x*a, y*a);  }
-  Pt operator/(const ld &a) const {
-    return Pt(x/a, y/a);  }
-  ld operator*(const Pt &a) const {
-    return x*a.x + y*a.y;  }
-  ld operator^(const Pt &a) const {
-    return x*a.y - y*a.x;  }
-  bool operator<(const Pt &a) const {
-    return x < a.x || (x == a.x && y < a.y); }
-    //return dcmp(x-a.x) < 0 || (dcmp(x-a.x) == 0 && dcmp(y-a.y) < 0); }
-  bool operator==(const Pt &a) const {
-    return dcmp(x-a.x) == 0 && dcmp(y-a.y) == 0;  }
-};
-ld norm2(const Pt &a) {
-  return a*a; }
-ld norm(const Pt &a) {
-  return sqrt(norm2(a)); }
-Pt perp(const Pt &a) {
-  return Pt(-a.y, a.x); }
-Pt rotate(const Pt &a, ld ang) {
-  return Pt(a.x*cos(ang)-a.y*sin(ang), a.x*sin(ang)+a.y*cos(ang)); }
-struct Line {
-  Pt s, e, v; // start, end, end-start
-  ld ang;
-  Line(Pt _s=Pt(0, 0), Pt _e=Pt(0, 0)):s(_s), e(_e) { v = e-s; ang = atan2(v.y, v.x); }
-  bool operator<(const Line &L) const {
-    return ang < L.ang;
-} };
-typedef struct Circle {
-  Pt o; ld r;
-  Circle(Pt _o=Pt(0, 0), ld _r=0):o(_o), r(_r) {}
-} Circ;
-
 struct CircleCover{
-  int C; Circ c[ N ]; //填入C(圓數量),c(圓陣列)
+  int C; Circle c[ N ]; //填入C(圓數量),c(圓陣列)
   bool g[ N ][ N ], overlap[ N ][ N ];
   // Area[i] : area covered by at least i circles
   D Area[ N ];
   void init( int _C ){ C = _C; }
-  bool CCinter( Circ& a , Circ& b , Pt& p1 , Pt& p2 ){
-    Pt o1 = a.O , o2 = b.O;
-    D r1 = a.R , r2 = b.R;
+  bool CCinter( Circle& a , Circle& b , Pt& p1 , Pt& p2 ){
+    Pt o1 = a.o , o2 = b.o;
+    D r1 = a.r , r2 = b.r;
     if( norm( o1 - o2 ) > r1 + r2 ) return {};
     if( norm( o1 - o2 ) < max(r1, r2) - min(r1, r2) ) return {};
     D d2 = ( o1 - o2 ) * ( o1 - o2 );
@@ -77,14 +28,14 @@ struct CircleCover{
     {return ang < a.ang;}
   }eve[ N * 2 ];
   // strict: x = 0, otherwise x = -1
-  bool disjuct( Circ& a, Circ &b, int x )
-  {return sign( norm( a.O - b.O ) - a.R - b.R ) > x;}
-  bool contain( Circ& a, Circ &b, int x )
-  {return sign( a.R - b.R - norm( a.O - b.O ) ) > x;}
+  bool disjuct( Circle& a, Circle &b, int x )
+  {return dcmp( norm( a.o - b.o ) - a.r - b.r ) > x;}
+  bool contain( Circle& a, Circle &b, int x )
+  {return dcmp( a.r - b.r - norm( a.o - b.o ) ) > x;}
   bool contain(int i, int j){
     /* c[j] is non-strictly in c[i]. */
-    return (sign(c[i].R - c[j].R) > 0 ||
-            (sign(c[i].R - c[j].R) == 0 && i < j) ) && contain(c[i], c[j], -1);
+    return (dcmp(c[i].r - c[j].r) > 0 ||
+            (dcmp(c[i].r - c[j].r) == 0 && i < j) ) && contain(c[i], c[j], -1);
   }
   void solve(){
 	  for( int i = 0 ; i <= C + 1 ; i ++ )
@@ -105,13 +56,13 @@ struct CircleCover{
         if( i != j && g[i][j] ){
           Pt aa, bb;
           CCinter(c[i], c[j], aa, bb);
-          D A=atan2(aa.Y - c[i].O.Y, aa.X - c[i].O.X);
-          D B=atan2(bb.Y - c[i].O.Y, bb.X - c[i].O.X);
+          D A=atan2(aa.y - c[i].o.y, aa.x - c[i].o.x);
+          D B=atan2(bb.y - c[i].o.y, bb.x - c[i].o.x);
           eve[E ++] = Teve(bb, B, 1);
           eve[E ++] = Teve(aa, A, -1);
           if(B > A) cnt ++;
         }
-      if( E == 0 ) Area[ cnt ] += pi * c[i].R * c[i].R;
+      if( E == 0 ) Area[ cnt ] += pi * c[i].r * c[i].r;
       else{
         sort( eve , eve + E );
         eve[E] = eve[0];
@@ -123,7 +74,3 @@ struct CircleCover{
           Area[cnt] +=
             (theta - sin(theta)) * c[i].r*c[i].r * 0.5;
 }}}}};
-
-signed main(){
-	return 0;
-}
