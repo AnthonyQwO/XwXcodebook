@@ -1,3 +1,6 @@
+// use AC.init();
+// need to AC.make_fail(); before AC.query(s);
+int ans[MXN] = {0};
 struct ACautomata{
   struct Node{
     int cnt,i;
@@ -39,12 +42,15 @@ struct ACautomata{
           que.push(fr->go[i]);
   } } } }
   void query(string s){
-      Node *cur=root;
-      for(int i=0;i<(int)s.size();i++){
-          while(cur&&!cur->go[s[i]-'a']) cur=cur->fail;
-          cur=(cur?cur->go[s[i]-'a']:root);
-          if(cur->i>=0) ans[cur->i]++;
-          for(Node *tmp=cur->dic;tmp;tmp=tmp->dic)
-              ans[tmp->i]++;
+    Node *cur=root;
+    for(int i=0;i<(int)s.size();i++){
+      while(cur&&!cur->go[s[i]-'a']) cur=cur->fail;
+      cur=(cur?cur->go[s[i]-'a']:root);
+      if(cur->i>=0) {
+        if(!ans[cur->i])    ans[cur->i] = i+1;
+      }
+      for(Node *tmp=cur->dic;tmp;tmp=tmp->dic){
+          if(!ans[tmp->i])    ans[tmp->i] = i+1;
+      }
   } }// ans[i] : number of occurrence of pattern i
 }AC;
