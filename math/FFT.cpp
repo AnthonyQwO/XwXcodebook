@@ -1,5 +1,4 @@
-// const int MXN = 262144;
-// (must be 2^k)
+// const int MXN = 262144 (MXN must be 2^k)
 // before any usage, run pre_fft() first
 typedef long double ld;
 typedef complex<ld> cplx; //real() ,imag()
