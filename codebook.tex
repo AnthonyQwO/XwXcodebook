@@ -139,8 +139,8 @@ stringstyle=\itshape\color{Green4},
 \subsection{Dinic $O(V^{2}E)$}
 \lstinputlisting{flow/dinic_BCW.cpp}
 
-%\subsection{Hungarian}
-%\lstinputlisting{flow/Hungarian.cpp}
+\subsection{匈牙利演算法}
+\lstinputlisting{flow/Hungarian.cpp}
 
 %\subsection{Hungarian Unbalanced}
 %\lstinputlisting{flow/HungarianUnbalanced.cpp}
@@ -160,8 +160,8 @@ stringstyle=\itshape\color{Green4},
 %\subsection{Gusfield}
 %\lstinputlisting{flow/gusfield.cpp}
 
-\subsection{Max flow with lower/upper bound}
-\lstinputlisting{flow/BoundedMaxflow.cpp}
+%\subsection{Max flow with lower/upper bound}
+%\lstinputlisting{flow/BoundedMaxflow.cpp}
 
 % \subsection{Relabel to Front}
 % \lstinputlisting{flow/relabelToFront.cpp}
@@ -270,6 +270,9 @@ stringstyle=\itshape\color{Green4},
 \subsection{Phi}
 \lstinputlisting{math/phi.cpp}
 
+\subsection{Int Sqrt}
+\lstinputlisting{math/intSqrt.cpp}
+
 \subsection{Result}
 \input{math/theorem.tex}
 
@@ -306,8 +309,8 @@ stringstyle=\itshape\color{Green4},
 %\subsection{Intersection of polygon and circle}
 %\lstinputlisting{geometry/Intersection_of_polygon_and_circle2.cpp}
 
-\subsection{Point In Polygon}
-\lstinputlisting{geometry/pointInPolygon.cpp}
+%\subsection{Point In Polygon}
+%\lstinputlisting{geometry/pointInPolygon.cpp}
 
 %\subsection{Intersection of 2 circles}
 \subsection{Circle cover}
@@ -368,11 +371,8 @@ stringstyle=\itshape\color{Green4},
 
 \section{Graph}
 
-%\subsection{DominatorTree}
-%\lstinputlisting{graph/DominatorTree.cpp}
-
-\subsection{DSU 並查集 \& MST}
-\lstinputlisting{graph/DSU.cpp}
+%\subsection{DSU 並查集 \& MST}
+%\lstinputlisting{graph/DSU.cpp}
 
 \subsection{Lowest Common Ancestor $O(lgn)$}
 \lstinputlisting{graph/LCA.cpp}
@@ -403,8 +403,8 @@ stringstyle=\itshape\color{Green4},
 %\subsection{Dynamic MST}
 %\lstinputlisting{graph/DynamicMST.cpp}
 
-\subsection{Maximum General graph Matching}
-\lstinputlisting{graph/generalMatching.cpp}
+%\subsection{Maximum General graph Matching}
+%\lstinputlisting{graph/generalMatching.cpp}
 
 %\subsection{Minimum General Weighted Matching}
 %\lstinputlisting{graph/Minimum_General_Weighted_Matching.cpp}
@@ -422,6 +422,9 @@ stringstyle=\itshape\color{Green4},
 \subsection{Directed Graph Min Cost Cycle}
 \lstinputlisting{graph/DirectedGraphMinCycle.cpp}
 
+\subsection{DominatorTree}
+\lstinputlisting{graph/DominatorTree.cpp}
+
 \subsection{K-th Shortest Path}
 \lstinputlisting{graph/KSP.cpp}
 
@@ -431,14 +434,18 @@ stringstyle=\itshape\color{Green4},
 \subsection{SPFA}
 \lstinputlisting{graph/spfa.cpp}
 
+\subsection{虛樹}
+\lstinputlisting{graph/VirtualTree.cpp}
+
 \subsection{Tree Hash}
-\lstinputlisting{graph/treehash.cpp}
+%\lstinputlisting{graph/treehash.cpp}
+\lstinputlisting{graph/treehash_new.cpp}
 
 \subsection{HeavyLightDecomposition}
 \lstinputlisting{graph/HeavyLightDecomp.cpp}
 
-\subsection{差分約束}
-\input{graph/SystemOfDifferenceConstraints.tex}
+\subsection{Graph Thearom}
+\input{graph/graph_theorem.tex}
 %\\[3cm]
 
 %\subsection{Graph Hash}
@@ -501,6 +508,9 @@ stringstyle=\itshape\color{Green4},
 \subsection{持久化 SMT}
 \lstinputlisting{dataStructure/SegmentTree_pointer.cpp}
 
+\subsection{持久化並查集}
+\lstinputlisting{dataStructure/PersistentDSU.cpp}
+
 \subsection{Trie}
 \lstinputlisting{dataStructure/trie.cpp}
 
@@ -510,8 +520,8 @@ stringstyle=\itshape\color{Green4},
 \subsection{Treap  (interval erase)}
 \lstinputlisting{dataStructure/treap_erase.cpp}
 
-\subsection{Link-Cut Tree}
-\lstinputlisting{dataStructure/link_cut_tree.cpp}
+%\subsection{Link-Cut Tree}
+%\lstinputlisting{dataStructure/link_cut_tree.cpp}
 
 \subsection{BIT}
 \lstinputlisting{dataStructure/BIT.cpp}
@@ -595,11 +605,11 @@ stringstyle=\itshape\color{Green4},
 \end{tikzpicture}
 
 
-\clearpage
-\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
-    \draw[step=0.2cm,color=gray] (0,0) grid (9,13);
+%\clearpage
+%\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
+%    \draw[step=0.2cm,color=gray] (0,0) grid (9,13);
     %\draw[step=1cm,color=black,line width=0.4mm] (0,0) grid (4,13);
-\end{tikzpicture}
+%\end{tikzpicture}
 
 \end{document}
 
