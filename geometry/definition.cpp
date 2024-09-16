@@ -37,6 +37,7 @@ Pt perp(const Pt &a) {
   return Pt(-a.y, a.x); }
 Pt rotate(const Pt &a, ld ang) {
   return Pt(a.x*cos(ang)-a.y*sin(ang), a.x*sin(ang)+a.y*cos(ang)); }
+bool collinear(Pt a, Pt b, Pt c) { return ((b - a) ^ (c - a)) == 0; }
 struct Circle {
   Pt o; ld r;
   Circle(Pt _o=Pt(0, 0), ld _r=0):o(_o), r(_r) {}
