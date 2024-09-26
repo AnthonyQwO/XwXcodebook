@@ -5,6 +5,12 @@
 // 2, 325, 9375, 28178, 450775, 9780504, 1795265022
 // Make sure testing integer is in range [2, n-2] if
 // you want to use magic.
+LL mul(LL x,LL y,LL mod){
+	LL ret=x*y-(LL)((long double)x/mod*y)*mod;
+	// LL ret=x*y-(LL)((long double)x*y/mod+0.5)*mod;
+	return ret<0?ret+mod:ret;
+}
+
 LL magic[]={}
 bool witness(LL a,LL n,LL u,int t){
 	if(!a) return 0;
