@@ -1,10 +1,10 @@
-Maximize c^T x subject to Ax ≤ b, x ≥ 0;
+Maximize $c^{T} x$ subject to $Ax ≤ b, x ≥ 0$;
 with the corresponding symmetric dual problem,
-Minimize b^T y subject to A^T y ≥ c, y ≥ 0.
+Minimize $b^T y$ subject to $A^{T} y ≥ c, y ≥ 0$.
 
-Maximize c^T x subject to Ax ≤ b;
+Maximize $c^{T} x$ subject to $Ax ≤ b$;
 with the corresponding asymmetric dual problem,
-Minimize b^T y subject to A^T y = c, y ≥ 0. 
+Minimize $b^{T} y$ subject to $A^{T} y = c, y ≥ 0$. 
 
 Minimum vertex cover on bipartite graph =
 Maximum matching on bipartite graph
@@ -12,10 +12,23 @@ Maximum matching on bipartite graph
 Minimum edge cover on bipartite graph =
 vertex number - Minimum vertex cover(Maximum matching)
 
+König Theorem
+最小點覆蓋：選出最少的點，滿足每條邊至少有一個端點被選
+二分圖中，最小點覆蓋 = 最大匹配
+
 Independent set on bipartite graph =
 vertex number - Minimum vertex cover(Maximum matching)
-
+二分圖中，最大獨立集 = n - 最小點覆蓋
 找出最小點覆蓋，做完dinic之後，從源點dfs只走還有流量的邊，左邊沒被走到的點跟右邊被走到的點就是答案，其他點為最大獨立集
+
+最大閉包(最大權閉合子圖)
+源點連到所有正權點流量為點權
+所有負權點連到匯點流量為點權(絕對值)
+所有圖上的邊權重為 INF
+
+路徑覆蓋數量
+把每個點拆成 入點 和 出點，轉化為二分圖
+原圖頂點數 - 二分圖最大匹配數
 
 Maximum density subgraph ($\sum W_e+\sum W_v$) / |V|
 
@@ -25,7 +38,7 @@ Let S be Sum of all weight( or inf)
 1. from source to each node with cap = S
 2. For each (u,v,w) in E, (u->v,cap=w), (v->u,cap=w)
 3. For each node v, from v to sink with cap = S + 2 * D - deg[v] - 2 * (W of v)
-where deg[v] = $\sum weight of edge associated with v$
+where deg[v] = $\sum weight\ of\ edge\ associated\ with\ v$
 If maxflow < S * |V|, D is an answer.
 
 Requiring subgraph: all vertex can be reached from source with
