@@ -14,6 +14,7 @@ Pt LLIntersect(Line a, Line b) {
   return q1*(f2/f) + q2*(f1/f);
 }
 
+// p at L's left(1), right(-1), onLine(0)
 int PtSide(Pt p, Line L) {
     return dcmp((L.e - L.s)^(p - L.s));
 }
