@@ -31,5 +31,5 @@ x.as_integer_ratio() # (1, 3)
 """input list of integers"""
 arr = list(map(int, input().split()))
 
-""""把字元轉成acsii code再轉回字串"""
+""""把字元轉成ascii再轉回字串"""
 chr(ord('a'))
