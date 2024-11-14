@@ -6,6 +6,7 @@ struct Line {
     return ang < L.ang;
 } };
 
+// NAN(parallel), INF(overlapping)
 Pt LLIntersect(Line a, Line b) {
   Pt p1 = a.s, p2 = a.e, q1 = b.s, q2 = b.e;
   ld f1 = (p2-p1)^(q1-p1),f2 = (p2-p1)^(p1-q2),f;
