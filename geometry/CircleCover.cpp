@@ -1,6 +1,6 @@
 #define N 1021
 #define ld long double
-struct CircleCover{
+struct CircleCover{   // O(N^2 logN)
   int C; Circle c[ N ]; //填入C(圓數量),c(圓陣列)
   bool g[ N ][ N ], overlap[ N ][ N ];
   // Area[i] : area covered by at least i circles

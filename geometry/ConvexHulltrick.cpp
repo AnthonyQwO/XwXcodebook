@@ -1,4 +1,4 @@
-struct Convex {
+struct Convex { // O(logN) for each operation
   int n;
   vector<Pt> A, V, L, U;
   Convex(const vector<Pt> &_A) : A(_A), n(_A.size()) { // n >= 3

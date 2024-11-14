@@ -1,4 +1,5 @@
 // P, Q, R(return) are counterclockwise order convex polygon
+// O(N)
 #define all(a) a.begin(),a.end()
 vector<Pt> Minkowski(vector<Pt> P, vector<Pt> Q) {
     auto cmp = [&](Pt a, Pt b) {

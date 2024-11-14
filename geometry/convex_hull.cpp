@@ -1,7 +1,7 @@
 double cross(Pt o, Pt a, Pt b){
   return (a-o) ^ (b-o);
 }
-vector<Pt> convex_hull(vector<Pt> pt){
+vector<Pt> convex_hull(vector<Pt> pt){  // O(N logN)
   sort(pt.begin(),pt.end());
   int top=0;
   vector<Pt> stk(2*pt.size());

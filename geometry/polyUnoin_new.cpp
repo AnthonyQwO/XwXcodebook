@@ -1,4 +1,4 @@
-// polyUnion
+// polyUnion O( N^2 logN )
 // Area[i] : area covered by at least i polygon
 // counterclockwise
 vector<double> PolyUnion(const vector<vector<Pt>> &P) {
