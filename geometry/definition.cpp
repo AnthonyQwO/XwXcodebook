@@ -28,6 +28,8 @@ struct Pt {
     //return dcmp(x-a.x) < 0 || (dcmp(x-a.x) == 0 && dcmp(y-a.y) < 0); }
   bool operator==(const Pt &a) const {
     return dcmp(x-a.x) == 0 && dcmp(y-a.y) == 0;  }
+  bool operator!=(const Pt &a) const {
+        return !(*this == a);  }
 };
 ld norm2(const Pt &a) {
   return a*a; }
