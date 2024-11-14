@@ -47,10 +47,12 @@ struct ACautomata{
       while(cur&&!cur->go[s[i]-'a']) cur=cur->fail;
       cur=(cur?cur->go[s[i]-'a']:root);
       if(cur->i>=0) {
-        if(!ans[cur->i])    ans[cur->i] = i+1;
+        //if(!ans[cur->i])    ans[cur->i] = i+1;
+        ans[cur->i]++;
       }
       for(Node *tmp=cur->dic;tmp;tmp=tmp->dic){
-          if(!ans[tmp->i])    ans[tmp->i] = i+1;
+        ans[tmp->i]++;
+          //if(!ans[tmp->i])    ans[tmp->i] = i+1;
       }
   } }// ans[i] : number of occurrence of pattern i
 }AC;
