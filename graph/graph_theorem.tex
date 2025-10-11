@@ -1,6 +1,19 @@
 \begin{itemize}
 \item 差分約束條件 :\\
-  約束條件 $V_j-V_i\le W$ addEdge($V_i, V_j, W $) and run bellman-ford or spfa
+  設 $dist[0] = 0$ 並向每一個點連一條權重為 $0$ 的邊,跑單源最短路,若圖中存在負環,則給定的差分約束系統無解,否則,$x_i = dist[i]$ 為該差分約束系統的一組解。
+  \newline
+  
+  \begin{tabular}{|p{0.1\textwidth}|p{0.16\textwidth}|p{0.12\textwidth}|}
+  \hline
+  條件 & 改寫條件 & 建邊 \\
+  \hline
+  $x_a - x_b \geq c$ & $x_b - x_a \leq -c$ & \texttt{add(a, b, -c);} \\
+  \hline
+  $x_a - x_b \leq c$ & $x_a - x_b \leq c$ & \texttt{add(b, a, c);} \\
+  \hline
+  $x_a = x_b$ & $x_a - x_b \leq 0, x_b - x_a \leq 0$ & \texttt{add(b, a, 0), add(a, b, 0);} \\
+  \hline
+  \end{tabular}
 \item 龜兔賽跑演算法: \\
   開始賽跑，兔子一次走兩格、烏龜一次走一格直到他們相遇停止\\
   此時讓兔子返回起始點，兩者以相同走一格的速度繼續前進，他們就會在環入口會合
