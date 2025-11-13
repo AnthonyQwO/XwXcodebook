@@ -1,6 +1,9 @@
 struct Convex { // O(logN) for each operation
   int n;
   vector<Pt> A, V, L, U;
+
+  // _A 的點要從左下角開始，逆時針，要是 Convex hull
+  // rotate(pts.begin(), min_element(all(pts)), pts.end());
   Convex(const vector<Pt> &_A) : A(_A), n(_A.size()) { // n >= 3
     auto it = max_element(all(A));
     L.assign(A.begin(), it + 1);
