@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 設 $dist[0] = 0$ 並向每一個點連一條權重為 $0$ 的邊,跑單源最短路,若圖中存在負環,則給定的差分約束系統無解,否則,$x_i = dist[i]$ 為該差分約束系統的一組解。
 \begin{tabular}{|c|c|c|}
 \hline
@@ -8,3 +9,21 @@ $x_a - x_b \leq c$ & $x_a - x_b \leq c$ & \texttt{add(b, a, c);} \\
 $x_a = x_b$ & $x_a - x_b \leq 0, x_b - x_a \leq 0$ & \texttt{add(b, a, 0), add(a, b, 0);} \\
 \hline
 \end{tabular}
+=======
+約束條件 $V_j - V_i \leq W$ 可轉換為 
+\[
+\text{addEdge}(V_i, V_j, W),
+\]
+然後使用 Bellman--Ford 或 SPFA 演算法來求解。  
+
+設
+\[
+dist[0] = 0,
+\]
+並從節點 $0$ 向每一個點連一條權重為 $0$ 的邊，接著執行單源最短路。  
+若圖中存在負環，則給定的差分約束系統無解；否則
+\[
+x_i = dist[i]
+\]
+即為該差分約束系統的一組解。
+>>>>>>> Stashed changes
